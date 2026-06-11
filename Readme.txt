@@ -1,56 +1,27 @@
-# Sales Data Cleaning & Exploratory Analysis
+# Revenue Decline Root Cause Analysis
 
-## Project Overview
-This project demonstrates **end‑to‑end SQL data cleaning and exploratory analysis** on a retail sales dataset. The goal was to prepare messy transactional data for reliable insights and then uncover key business trends across markets, products, and time periods.  
+## Executive Summary
+This project investigates the root cause of a significant revenue decline (₹7.8 Cr drop between 2018 and 2019) for a B2B hardware/electronics supplier. While initial hypotheses suggested seasonality or broad market weakness, a deep-dive data analysis using **SQL** and **Python** revealed that **86.9% of the revenue drop is directly attributable to reduced orders from just the Top 10 customers. 
+The analysis proves that the business is facing a severe customer concentration risk rather than a systemic market downturn**. 
 
-It includes:
-- Cleaning anomalies (duplicate markets, invalid transactions, currency inconsistencies).
-- Creating clean, reusable SQL views.
-- Performing exploratory queries to identify top markets, products, and revenue drivers.
-- Visualizing results in interactive dashboards.
+## Project Structure
+The repository is structured to reflect a professional data analysis pipeline:
+
+- `data/Raw_Data.sql`: The raw database dump used for the analysis.
+- `sql/01_data_cleaning.sql`: SQL scripts to clean anomalies (invalid transactions, duplicate markets) and normalize currency (USD to INR).
+- `sql/02_revenue_decline_analysis.sql`: Exploratory SQL queries that identified the Q4 revenue dips and localized the problem to customer behavior.
+- `notebooks/03_customer_concentration_analysis.ipynb`: A Python (Pandas & Matplotlib) deep dive that quantifies the concentration risk and formulates business recommendations.
 
 ## Tech Stack
-- **SQL (MySQL)** – Data cleaning, transformations, and analysis.
-- **Power BI** – Dashboard creation and visualization.
-- **SQL Database** – Data source format.
+- **SQL (MySQL):** Data cleaning, ETL, and initial exploratory data analysis.
+- **Python (Pandas, Matplotlib, SQLAlchemy):** Advanced data manipulation, statistical deep-dives, and data visualization.
 
-## Data Cleaning Steps
-1. **Market anomalies**  
-   - Removed markets with no transactions (New York, Paris).  
-   - Handled duplicate entries (Bhopal with two market codes).
+## Key Findings
+1. **It's a Concentration Problem, Not Seasonality:** The Top 10 customers account for 73–77% of total revenue every year. Their reduced purchasing behavior drove the massive 2019 revenue decline.
+2. **Growth in the Long Tail:** While Top 10 customers pulled back, non-Top 10 customer revenue actually grew by ₹25L in Q3 2019, proving that broad market demand remains healthy.
+3. **Volume Drop:** Top 10 customer order volume fell by 24.3% YoY, confirming that the revenue drop was caused by fewer purchases, not just smaller basket sizes.
 
-2. **Transaction anomalies**  
-   - Excluded records with `sales_amount <= 0` (1611 records, ~0.5% of products).  
-   - Normalized currency values:
-     - Converted USD → INR using fixed rate for simplicity(1 USD = 89 INR).  
-     - Trimmed escape sequences in currency field.
-
-3. **Views created**  
-   - `markets_clean`: Only valid markets with transactions.  
-   - `transactions_clean`: Transactions with positive sales amounts and normalized currency.
-
-## Exploratory Analysis
-Key queries and findings:
-- **Revenue by Zone**: North zone dominates overall revenue.  
-- **Top Products**: Product 040 (~₹2.35M) leads, followed by 159 and 065.  
-- **Product Type Revenue**: Own Brand generates ~2.55× more revenue than Distribution.  
-- **Quarterly Trends**:  
-  - Partial data available for 2017(Q4) and 2020(Q1 and Q2).
-  - Q3 outperformed Q2 in 2018 & 2019.  
-  - 2020 showed declining sales, with Q1 being the weakest.  
-- **Customer Segments**: Electrical Stores are the largest revenue contributors (~0.4B).  
-
-## Dashboards
-Two dashboards were built to visualize insights:
-- **Revenue & Sales Overview**: Trends by zone, quarter, and product type.  
-- **Market & Customer Performance**: Top/least performing markets, top customers, and product breakdowns.  
-
-These dashboards make the analysis accessible to non‑technical stakeholders.
-
-## Business Insights
-- Focus marketing and distribution efforts in **North zone** where revenue is highest.  
-- Prioritize **top 12 products** that generate more than ₹1M each.  
-- Strengthen **Own Brand strategy**, as it significantly outperforms Distribution.  
-- Monitor **declining 2020 trend** and prepare corrective actions for future quarters.  
-
-
+## Strategic Recommendations
+- **Immediate Account Management:** Deploy targeted retention efforts for the "Critical-tier" customers. Four specific accounts are responsible for 77% of the total revenue decline.
+- **Diversification Strategy:** Actively invest in and develop the non-Top 10 customer base, which has already demonstrated organic growth despite the top-heavy revenue losses.
+- **Investigate the "Why":** Combine these quantitative findings with CRM data or sales team feedback to understand *why* the top accounts are ordering less (e.g., competitor pricing, contract renegotiations, or inventory changes).
