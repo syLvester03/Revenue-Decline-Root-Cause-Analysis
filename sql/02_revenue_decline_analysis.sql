@@ -64,7 +64,7 @@ FROM (
 		YEAR(order_date) AS year,
 		QUARTER(order_date) AS qtr,
 		SUM(sales_amount) AS revenue
-	FROM transactions AS tc
+	FROM transactions_clean AS tc
 	INNER JOIN customers AS cust
 		ON tc.customer_code = cust.customer_code
 	GROUP BY customer_type, year, qtr
@@ -82,7 +82,7 @@ FROM (
 		YEAR(order_date) AS year,
 		QUARTER(order_date) AS qtr,
 		SUM(sales_amount) AS revenue
-	FROM transactions AS tc
+	FROM transactions_clean AS tc
 	INNER JOIN customers AS cust
 		ON tc.customer_code = cust.customer_code
 	WHERE customer_type = 'Brick & Mortar'
@@ -117,10 +117,10 @@ FROM (
 		YEAR(order_date) AS year,
 		QUARTER(order_date) AS qtr,
 		SUM(sales_amount) AS revenue
-	FROM transactions AS tc
+	FROM transactions_clean AS tc
 	INNER JOIN customers AS cust
 		ON tc.customer_code = cust.customer_code
-	WHERE customer_type != 'Brick & Mortar'
+	WHERE customer_type = 'E-commerce'
 	GROUP BY customer_type, custmer_name, year, qtr
 	HAVING year NOT IN (2017,2020) 
     ) AS t
@@ -147,7 +147,7 @@ WITH cust_revenue AS (
 	SELECT customer_type,
 			custmer_name,
 			SUM(sales_amount) AS revenue
-		FROM transactions AS tc
+		FROM transactions_clean AS tc
 		INNER JOIN customers AS cust
 			ON tc.customer_code = cust.customer_code
 		GROUP BY customer_type, custmer_name
