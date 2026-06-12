@@ -57,7 +57,7 @@ Revenue-Decline-Root-Cause-Analysis/
 
 ## Dashboard
 
-The Power BI dashboard (`Dashboard/Revenue_Decline_RCA.pbix`) translates the analysis findings into two report pages.
+The Power BI dashboard (`report/Revenue_Decline_RCA.pbix`) translates the analysis findings into two report pages.
 
 ---
 
