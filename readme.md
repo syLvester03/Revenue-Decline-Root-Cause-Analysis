@@ -63,7 +63,7 @@ The Power BI dashboard (`Dashboard/Revenue_Decline_RCA.pbix`) translates the ana
 
 ### Page 1 — B2B Sales: Revenue Dashboard
 
-![Revenue Dashboard](Dashboard/screenshots/Revenue_Dashboard.png)
+![Revenue Dashboard](report/screenshots/Revenue_Dashboard.png)
 
 A high-level executive overview covering the full 2018–2020 period:
 
@@ -77,7 +77,7 @@ A high-level executive overview covering the full 2018–2020 period:
 
 ### Page 2 — Customer Concentration Risk
 
-![Customer Concentration Risk](Dashboard/screenshots/customer_concentration.png)
+![Customer Concentration Risk](report/screenshots/customer_concentration.png)
 
 A focused drill-down on the concentration finding, filterable by year (2018 / 2019 / 2020):
 
@@ -87,8 +87,6 @@ A focused drill-down on the concentration finding, filterable by year (2018 / 20
 - **Revenue YoY Change: Top 10 Customers** — a table breaking down each named account's % revenue change in 2019 and 2020. Nixon shows the steepest 2019 decline at –48.92%, with every account in the red
 - **Top 10 Decline Contribution** — a large-format KPI card: **75.17%** of total revenue decline is attributable to the Top 10 group
 - **Revenue Decline Over the Years: Top 10 Customers** — a horizontal bar chart (2018: ₹314M → 2019: ₹247M → 2020: ₹108M) with a 34.2% total contraction marker
-
-> **Note:** All currency values are normalized to INR. USD transactions were converted at a fixed rate of ₹89/USD for analysis simplicity.
 
 ---
 
