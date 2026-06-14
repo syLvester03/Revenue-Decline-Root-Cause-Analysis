@@ -243,7 +243,8 @@ FROM (
 		   SUM(CASE WHEN YEAR(order_date)=2018 THEN sales_amount ELSE 0 END) AS revenue_18,
 		   SUM(CASE WHEN YEAR(order_date)=2019 THEN sales_amount ELSE 0 END) AS revenue_19
 	FROM transactions_clean tc
-	JOIN markets_clean mc ON tc.market_code = mc.markets_code
+	INNER JOIN markets_clean mc 
+		ON tc.market_code = mc.markets_code
 	GROUP BY zone, markets_code, markets_name
     ) AS t
 ORDER BY zone, revenue_change;
@@ -256,7 +257,7 @@ Central:
 - Mumbai - 1.1Cr, Bhopal(Mark013) just under 10lakhs, Nagpur - 17Lakhs
 South:
 - Growth in 3 markets, Hyderabad & Kochi - over 3.5lakhs, Bhubaneshwar - 1.3Lakh. Chennai saw decline of 38Lakhs
-- Bengaluru market shut down in 2018 ( 0 revenue in 2019)
+- Bengaluru had revenue in 2018, 0 in 2019 — effectively shut down
 */
 
 SELECT zone,
@@ -343,6 +344,3 @@ FROM (
     ) AS t
 GROUP BY zone_count;
 -- 19 customers make purchases from 2 zones, 11 customers are only limited to a single zone, 8 customers exist across all zones
-
-/* South is a new developing zone with growth potential - revenue growth in 3/4 markets, good avg order value, highest avg basket size.
-However what lacks is, developed customer base only 11 customers in the whole zone and order volume of only 8110. */ 
