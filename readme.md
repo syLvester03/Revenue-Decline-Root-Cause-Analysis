@@ -4,7 +4,7 @@
 
 This project investigates the root cause of a significant revenue decline — a **₹7.8 Cr drop between 2018 and 2019** — for a B2B hardware and electronics supplier. While initial hypotheses pointed to seasonality or broad market weakness, a structured deep-dive using **SQL** and **Python** revealed a more specific and actionable cause: **86.9% of the revenue drop is directly attributable to reduced orders from just the Top 10 customers.**
 
-The analysis demonstrates that this is a **customer concentration risk problem**, not a systemic market downturn. The business derives 73–77% of its annual revenue from a single-digit group of accounts, and a pullback from just four of them accounts for 77% of the total decline.
+The analysis demonstrates that this is a **customer concentration risk problem**, not a systemic market downturn. The business derives 73–77% of its annual revenue from a single-digit group of accounts, and a pullback from just six of them accounts for 77% of the total decline.
 
 ---
 
@@ -124,8 +124,7 @@ The non-Top 10 segment is currently absorbing some of the concentration risk thr
 - The dataset covers transactions from **2017 to mid-2020**. 2017 contains only Q4 data and 2020 contains only H1 data; both years are excluded from YoY comparisons.
 - Two anomalous market codes (097 — New York, 999 — Paris) appear in the `markets` table but have no corresponding transactions and are excluded via the `markets_clean` view.
 - Bhopal appears under two market codes (007 and 013) with 13,228 and 96 records respectively. Both are retained on the assumption that the city has two separate distribution points.
-- A fixed exchange rate of **₹89 per USD** is applied to all USD-denominated transactions. This is a simplification; historical rate variation is not modelled.
-- There is no visibility into *why* top customers reduced their orders — no CRM records, contract terms, or competitor data are available in this dataset. The quantitative findings here should be paired with qualitative account-level investigation.
+- There is no visibility into why top customers reduced their orders — no CRM records, contract terms, or competitor data are available in this dataset. The quantitative findings here should be paired with qualitative account-level investigation.
 
 ---
 
