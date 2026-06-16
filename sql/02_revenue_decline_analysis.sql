@@ -4,9 +4,6 @@ USE sales;
 			or by a small group of high-value customers reducing their purchases? */
 
 -- Revenue breakdown and Trend
-SELECT * 
-FROM transactions_clean;
-
 SELECT YEAR(order_date) AS year, MONTH(order_date) AS month
 FROM transactions_clean
 GROUP BY year, month
