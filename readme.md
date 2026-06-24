@@ -17,6 +17,8 @@ diversification targets.
 with executive overview, customer concentration drill-down, and geographic 
 attribution — [screenshots below](#dashboard)
 
+---
+
 ## Executive Summary
 
 This project investigates the root cause of a significant revenue decline(**₹7.8 Cr drop between 2018 and 2019**) for a B2B hardware and electronics supplier. While initial hypotheses pointed to seasonality or broad market weakness, a structured deep-dive using **SQL** and **Python** revealed a more specific and actionable cause: **86.9% of the revenue drop is directly attributable to reduced orders from just the Top 10 customers.**
@@ -183,6 +185,7 @@ The non-Top 10 segment is currently absorbing some of the concentration risk thr
 - The `custmer_name` column is misspelled in the source database schema (missing an "o"). This is preserved as-is throughout the SQL and Python code for consistency with the underlying tables.
 - Bengaluru (South zone) had ~₹3.7L in revenue in 2018 and ₹0 in 2019. Investigation traced this to incidental purchases by customers (Electricalsara Stores, Excel Stores) whose primary activity is in other markets — Bengaluru functioned as a minor secondary location for these accounts rather than an independent market, and its disappearance reflects those accounts' broader pullback rather than a standalone market failure.
 - There is no visibility into *why* top customers reduced their orders — no CRM records, contract terms, or competitor data are available in this dataset. The quantitative findings here should be paired with qualitative account-level investigation.
+- The underlying dataset is the AtliQ Hardware sales dump from Code Basics. The RFM segmentation, hypothesis testing, and geographic drill-down on Pages 2–3 are extensions beyond the tutorial scope.
 
 ---
 
