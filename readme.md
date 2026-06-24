@@ -85,9 +85,11 @@ Revenue-Decline-Root-Cause-Analysis/
 | **Power BI** | Executive-facing dashboard and data visualisation |
 
 ![Data Model](report/screenshots/data_model.png)
+
 *Star schema - `sales transactions_clean` as the fact table, joined to four 
 dimension tables. Currency normalisation and market deduplication applied 
 upstream in SQL; clean views carry through directly into Power BI.*
+
 ---
 
 ## Dashboard
