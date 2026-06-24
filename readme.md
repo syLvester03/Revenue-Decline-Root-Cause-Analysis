@@ -1,5 +1,22 @@
 # Revenue Decline Root Cause Analysis
 
+## TL;DR
+
+A ₹7.8 Cr revenue decline (2018–19) for a B2B hardware supplier, 
+investigated end-to-end using SQL and Python.
+
+**Finding:** 86.9% of the drop traces to reduced orders from the Top 10 
+customers. A customer concentration risk, not a market downturn. Six named 
+accounts drive 77% of the decline, and their pullback has a direct geographic 
+footprint across Delhi NCR, Chennai, and Bengaluru. Two South markets 
+(Hyderabad, Kochi) show independent organic growth and are concrete 
+diversification targets.
+
+**Stack:** MySQL · Python (Pandas, SciPy, SQLAlchemy) · Power BI  
+**Deliverables:** 2 SQL scripts · 3 Python notebooks · 3-page Power BI dashboard 
+with executive overview, customer concentration drill-down, and geographic 
+attribution — [screenshots below](#dashboard)
+
 ## Executive Summary
 
 This project investigates the root cause of a significant revenue decline(**₹7.8 Cr drop between 2018 and 2019**) for a B2B hardware and electronics supplier. While initial hypotheses pointed to seasonality or broad market weakness, a structured deep-dive using **SQL** and **Python** revealed a more specific and actionable cause: **86.9% of the revenue drop is directly attributable to reduced orders from just the Top 10 customers.**
@@ -67,6 +84,10 @@ Revenue-Decline-Root-Cause-Analysis/
 | **SciPy (stats)** | Hypothesis testing (Welch's t-test and Mann-Whitney U) to validate the significance of YoY changes in order value, basket size, and order volume |
 | **Power BI** | Executive-facing dashboard and data visualisation |
 
+![Data Model](report/screenshots/data_model.png)
+*Star schema - `sales transactions_clean` as the fact table, joined to four 
+dimension tables. Currency normalisation and market deduplication applied 
+upstream in SQL; clean views carry through directly into Power BI.*
 ---
 
 ## Dashboard
